@@ -1,0 +1,25 @@
+Source: h5cpp
+Section: utils
+Priority: optional
+Maintainer: Steven Varga <steven@vargaconsulting.ca>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: http://h5cpp.org
+Vcs-Git: git://steven-varga/h5cpp.git
+
+Package: h5cpp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: foreign
+Description: compiler to generate HDF5 compound type descriptor from POD types
+ h5cpp is the binary component of HDF5 based high performance non-intrusive 
+ persistence header only library for modern C++. This source code transformation
+ tool / pre-compiler builds the AST of a specified translation unit, identifies
+ arbitrary deep POD struct variables referenced/used by H5CPP header only 
+ library operators: 
+       h5::create | h5::read | h5::write | h5::append
+	   h5::acreate | h5::aread | h5::awrite
+ and generates the necessary HDF5 compound datatype descriptors. In the second
+ phase, using system compiler gcc,clang,msvc, ... compile this translation
+ unit into an object file.
+
