@@ -75,7 +75,9 @@ Currently work is being done to design an alternative error reporting mechanism 
 
 2. To compile h5cpp source code transformation tool is non-trivial, requires properly set up LLVM 6.0.0 environment with clang support. It is strongly suggested to [download the debian based binary package](http://h5cpp.org/download).
 
-
+3. it requires the provided `h5cpp-llvm/*` include files be reachable only in the `h5cpp` tool invocation, otherwise the include files may collide 
+the system compiler include files. This is not an error, but the property of the underlying LLVM/clang system. The correct invocation is:
+`h5cpp  your_translation_unit.cpp -- -v $(CXXFLAGS) -I/usr/include/h5cpp-llvm -Dgenerated.h` given that `h5cpp` ins installed in `/usr/bin`.
 
 
 [hdf5]: https://support.hdfgroup.org/HDF5/doc/H5.intro.html
