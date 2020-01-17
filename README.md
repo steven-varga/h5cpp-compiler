@@ -68,16 +68,30 @@ namespace sn {
 	/* END IGNORED STRUCTS */
 ```
 
-CAVEAT:
+Install:
+----------
+Only **LLVM 6.0 is supported**, to compile from  source you need both the llvm and clang-dev package installed:
+```
+sudo apt install llvm-6.0 llvm-6.0-dev libclang-6.0-dev  # 640MB space needed
+make && make install                                     # compile the source code transforation tool
+```
+optionally you can remove the development libraries, and install only the runtime
+```
+sudo apt purge llvm-6.0 libllvm-6.0-dev libclang-6.0-dev # remove development libraries
+sudo apt install libllvm6.0 libclang-common-6.0-dev      # install runtime dependencies
+```
+
+Caveat:
 -------
-1. This LLVM/CLANG based tool requires a syntacticly/semantically valid input, otherwise silently fails with empty generated file. This is a result of the internal LLVM error reporting mechanism being muted, on the grounds that the input files: the actual TU translation unit is incomplete yet, and having that information printed would confuse users.
-Currently work is being done to design an alternative error reporting mechanism that allow to prcess and report syntactic errors on incomplete translation units.
+All LLVM version other than 6.0 is failing, or crashing including the clang++ chain. This is being investigated, and once resolved this message
+will be removed.
 
-2. To compile h5cpp source code transformation tool is non-trivial, requires properly set up LLVM 6.0.0 environment with clang support. It is strongly suggested to [download the debian based binary package](http://h5cpp.org/download).
+Usage:
+-------
+`h5cpp  your_translation_unit.cpp -- -v $(CXXFLAGS)  -Dgenerated.h`
+will run the compiler front end on the specified input, and outputs the necessary HDF5 type descriptors, or 
+the error message if any.
 
-3. it requires the provided `h5cpp-llvm/*` include files be reachable only in the `h5cpp` tool invocation, otherwise the include files may collide 
-the system compiler include files. This is not an error, but the property of the underlying LLVM/clang system. The correct invocation is:
-`h5cpp  your_translation_unit.cpp -- -v $(CXXFLAGS) -I/usr/include/h5cpp-llvm -Dgenerated.h` given that `h5cpp` ins installed in `/usr/bin`.
 
 
 [hdf5]: https://support.hdfgroup.org/HDF5/doc/H5.intro.html

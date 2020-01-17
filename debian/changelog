@@ -1,4 +1,10 @@
-h5cpp (1.10.4.1) unstable; urgency=medium
+h5cpp (1.10.4.5) unstable; urgency=medium
+
+  * llvm-6 based distribution without custom compile
+
+ -- steven varga <steven@vargaconsulting.ca>  Thu, 16 Jan 2020 08:40:39 +0500
+
+h5cpp (1.10.4.4) unstable; urgency=medium
 
   * first binary distribution of h5cpp compiler
 

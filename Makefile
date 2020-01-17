@@ -1,7 +1,7 @@
 
 PREFIX = /usr/local
 
-VERSION = 1.10.4.1
+VERSION = 1.10.4.5
 PROGRAM_NAME=h5cpp
 BIN_DIR = $(PREFIX)/bin
 INCLUDE_DIR = $(PREFIX)/include
@@ -44,7 +44,8 @@ install: installdirs
 	$(INSTALL_PROGRAM)	h5cpp   $(BIN_DIR)/$(PROGRAM_NAME)
 	$(INSTALL_DATA)		h5cpp.1 $(MAN_DIR)/$(PROGRAM_NAME).$(MAN_EXT)
 	$(INSTALL_INCLUDE)	-d $(INCLUDE_DIR)/$(PROGRAM_NAME)-llvm
-	find h5cpp-llvm -type f -exec install -Dm 755 "{}" "${INCLUDE_DIR}/{}" \;
+	
+#find h5cpp-llvm -type f -exec install -Dm 755 "{}" "${INCLUDE_DIR}/{}" \;
 
 clean:
 	$(RM) -rf debian/h5cpp
@@ -53,4 +54,5 @@ clean:
 
 dist: h5cpp
 	debuild -i -us -uc -b
+
 

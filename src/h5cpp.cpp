@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 vargaconsulting, Toronto,ON Canada
+/* Copyright (c) 2018 - 2020 vargaconsulting, Toronto,ON Canada
  * Author: Varga, Steven <steven@vargaconsulting.ca>
  */
 
@@ -23,7 +23,6 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-//#include <h5cpp/macros.h>
 
 using namespace clang::tooling;
 using namespace llvm;
@@ -31,7 +30,6 @@ using namespace clang;
 using namespace clang::ast_matchers;
 
 #include "producer.hpp"
-//#include "producer_text.hpp"
 #include "producer_h5.hpp"
 #include "consumer.hpp"
 
@@ -78,7 +76,7 @@ int main(int argc, const char **argv) {
 	argc --;
 
 	std::cerr <<
-		"H5CPP: Copyright (c) 2018     , VargaConsulting, Toronto,ON Canada\n"
+		"H5CPP: Copyright (c) 2018-2020, VargaConsulting, Toronto,ON Canada\n"
 	   	"LLVM : Copyright (c) 2003-2010, University of Illinois at Urbana-Champaign.\n"
 	;
 
@@ -87,8 +85,8 @@ int main(int argc, const char **argv) {
 				 OptionsParser.getSourcePathList());
 	H5TemplateCallback<H5Producer> callback( path );
 	MatchFinder Finder;
-	//Finder.addMatcher(h5templateMatcher, &callback );
-	Tool.setDiagnosticConsumer( new IgnoringDiagConsumer() );
+	Finder.addMatcher(h5templateMatcher, &callback );
+	//Tool.setDiagnosticConsumer( new IgnoringDiagConsumer() );
 	//TODO: 
 	// in first pass h5::operators trip, as template specializations are not yet generated
 	// for now the entire diagnostic messages are disabled and error diagnostics left for final

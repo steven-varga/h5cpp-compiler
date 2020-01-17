@@ -9,7 +9,9 @@ Vcs-Git: git://steven-varga/h5cpp.git
 
 Package: h5cpp
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: libllvm6.0, libstdc++6, libc6 (>=2.27), libclang-common-6.0-dev  ${misc:Depends}, ${shlibs:Depends}
+Recommends: h5cpp-dev 
+Enhances: libhdf5-dev, libhdf5-openmpi-dev, libhdf5-serial-dev 
 Multi-Arch: foreign
 Description: compiler to generate HDF5 compound type descriptor from POD types
  h5cpp is the binary component of HDF5 based high performance non-intrusive 

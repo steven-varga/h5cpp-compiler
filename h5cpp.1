@@ -21,10 +21,6 @@ output filename to be generated
 .B -v
 verbose invocation of the underlying clang tooling framework to aid you with 
 identifying search paths, etc...
-.TP
-.B -e
-error messages are suppressed by default, since the TU translation unit is incomplete. This flag 
-will re-enable clang error reports
 
 .SH EXAMPLES
 .TP
@@ -33,11 +29,8 @@ will re-enable clang error reports
 will build AST from translation_unit.cpp and create HDF5 compound descriptors in generated.h
 
 .SH CAVEATS
-h5cpp compiler doesn't report error but silently fails if the input is incorrect generating an empty file.
-The rationale behind this behaviour that the input is incomplete because of the missing compound datatype descriptors
-and trips clang internal error reporting even with the correct input.
 
 
 .SH AUTHOR
-steven varga <steven@vargaconsulting.ca>
+2018-2020 steven varga <steven@vargaconsulting.ca>
 
