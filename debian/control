@@ -1,16 +1,16 @@
-Source: h5cpp
+Source: libh5cpp-dev
 Section: utils
 Priority: optional
 Maintainer: Steven Varga <steven@vargaconsulting.ca>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Homepage: http://h5cpp.org
-Vcs-Git: git://steven-varga/h5cpp.git
+Vcs-Git: git://steven-varga/h5cpp-compiler.git
 
-Package: h5cpp
+Package: libh5cpp-dev
 Architecture: any
 Depends: libllvm6.0, libstdc++6, libc6 (>=2.27), libclang-common-6.0-dev  ${misc:Depends}, ${shlibs:Depends}
-Recommends: h5cpp-dev 
+Recommends: libh5cpp 
 Enhances: libhdf5-dev, libhdf5-openmpi-dev, libhdf5-serial-dev 
 Multi-Arch: foreign
 Description: compiler to generate HDF5 compound type descriptor from POD types
