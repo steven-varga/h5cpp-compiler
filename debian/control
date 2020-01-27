@@ -1,4 +1,4 @@
-Source: libh5cpp-dev
+Source: h5cpp-compiler
 Section: utils
 Priority: optional
 Maintainer: Steven Varga <steven@vargaconsulting.ca>
@@ -7,7 +7,7 @@ Standards-Version: 3.9.5
 Homepage: http://h5cpp.org
 Vcs-Git: git://steven-varga/h5cpp-compiler.git
 
-Package: libh5cpp-dev
+Package: h5cpp-compiler
 Architecture: any
 Depends: libllvm6.0, libstdc++6, libc6 (>=2.27), libclang-common-6.0-dev  ${misc:Depends}, ${shlibs:Depends}
 Recommends: libh5cpp 
