@@ -1,0 +1,5 @@
+h5cpp-compiler (1.10.4.5-1~exp1) experimental; urgency=medium
+
+  * first official debian release for h5cpp-compiler (closes: #950819)
+
+ -- Steven Varga <steven@vargaconsulting.ca>  Thu, 06 Feb 2020 04:14:00 +0500

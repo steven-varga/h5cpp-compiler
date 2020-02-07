@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+ifneq ($(DEB_BUILD_MULTIARCH),$(DEB_HOST_MULTIARCH))
+       export CC=$(DEB_HOST_MULTIARCH)-gcc
+endif
+
+%:
+	dh $@
+override_dh_auto_configure:
+	 dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib
+
+override_dh_installdocs:
+	dh_installdocs		CONTRIBUTORS TODO

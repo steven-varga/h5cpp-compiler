@@ -1,0 +1,40 @@
+Source: h5cpp-compiler
+Section: utils
+Priority: optional
+Maintainer: Steven Varga <steven@vargaconsulting.ca>
+Build-Depends: debhelper (>= 12~), cmake, llvm-6.0, llvm-6.0-dev, libclang-6.0-dev
+Standards-Version: 4.5.0
+Homepage: http://h5cpp.org
+Vcs-Git: https://github.com/steven-varga/h5cpp-compiler.git
+Vcs-Browser: https://github.com/steven-varga/h5cpp-compiler
+Rules-Requires-Root: no
+
+Package: h5cpp-compiler-dev
+Architecture: all
+Depends: libllvm6.0, libstdc++6, libc6 (>=2.27), libclang-common-6.0-dev, ${misc:Depends}
+Recommends: libh5cpp
+Description: LLVM based compiler assisted reflection for modern C++
+ H5CPP-compiler automates the tedious and error prone process of handwriting HDF5
+ compound type data descriptors providing similar level of data
+ serialization/persistence experience of popular interpreted languages
+ but compile time.
+ This non-intrusive source code transformation tool is a companion to h5cpp
+ template library it builds the AST of a specified translation unit,
+ identifies arbitrary deep POD struct variables referenced/used by the
+ template library operators:
+    h5::create | h5::read | h5::write | h5::append
+    h5::acreate | h5::aread | h5::awrite
+ and generates the necessary HDF5 compound datatype descriptors. In the second
+ phase, using system compiler gcc,clang,msvc, ... the user compiles this now
+ complete translation unit into an object file.
+ .
+ The h5cpp compiler assisted reflection and its companion header library
+ was developed for low latency event stream recording arising in high
+ frequency trading applications, Real Time Bidding and general machine
+ learning.
+ .
+ Primary competing idea to compiler assisted reflection is the recently
+ developed purely template based introspection and reflection for C++
+ which is not yet available. While there are many related work based on
+ runtime approach, or templates most of them requiring some modification
+ to original code making it intrusive, or less performance oriented.
