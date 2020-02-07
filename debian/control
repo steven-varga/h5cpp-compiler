@@ -1,5 +1,5 @@
 Source: h5cpp-compiler
-Section: utils
+Section: devel
 Priority: optional
 Maintainer: Steven Varga <steven@vargaconsulting.ca>
 Build-Depends: debhelper (>= 12~), cmake, llvm-6.0, llvm-6.0-dev, libclang-6.0-dev
