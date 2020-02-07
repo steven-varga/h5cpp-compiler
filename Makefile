@@ -1,15 +1,14 @@
-
 PREFIX = /usr/local
 
 VERSION = 1.10.4.5
-PROGRAM_NAME=h5cpp
+DEB = -1~exp1
+PROGRAM_NAME=h5cpp-compiler
 BIN_DIR = $(PREFIX)/bin
 INCLUDE_DIR = $(PREFIX)/include
 
 MAN_BASE_DIR = $(PREFIX)/man
 MAN_DIR = $(MAN_BASE_DIR)/man1
 MAN_EXT = 1
-
 
 INSTALL = install	# install : UCB/GNU Install compatiable
 
@@ -24,7 +23,6 @@ INSTALL_DATA    = $(INSTALL) -c -m 0644
 INSTALL_INCLUDE = $(INSTALL)    -m 0755
 
 OBJECT_FILES = 
-#fdupes.o md5/md5.o $(ADDITIONAL_OBJECTS)
 
 #####################################################################
 # no need to modify anything beyond this point                      #
@@ -41,11 +39,8 @@ installdirs:
 	test -d $(INCLUDE_DIR) || $(MKDIR) $(MAN_DIR)
 
 install: installdirs
-	$(INSTALL_PROGRAM)	h5cpp   $(BIN_DIR)/$(PROGRAM_NAME)
+	$(INSTALL_PROGRAM)	h5cpp   $(BIN_DIR)/
 	$(INSTALL_DATA)		h5cpp.1 $(MAN_DIR)/$(PROGRAM_NAME).$(MAN_EXT)
-	$(INSTALL_INCLUDE)	-d $(INCLUDE_DIR)/$(PROGRAM_NAME)-llvm
-	
-#find h5cpp-llvm -type f -exec install -Dm 755 "{}" "${INCLUDE_DIR}/{}" \;
 
 clean:
 	$(RM) -rf debian/h5cpp
@@ -55,4 +50,20 @@ clean:
 dist: h5cpp
 	debuild -i -us -uc -b
 
+tar-gz:
+	tar --exclude='.[^/]*' --exclude-vcs-ignores -czvf ../${PROGRAM_NAME}_${VERSION}.orig.tar.gz ./ 
+	gpg --detach-sign --armor ../${PROGRAM_NAME}_${VERSION}.orig.tar.gz	
+	scp ../${PROGRAM_NAME}_${VERSION}.orig.tar.* osaka:h5cpp.org/download/ 
 
+dist-debian-src: tar-gz
+	debuild -i -us -uc -S
+
+dist-debian-bin:
+	debuild -i -us -uc -b
+
+dist-debian-src-upload: dist-debian-src
+	debsign -k 1B04044AF80190D78CFBE9A3B971AC62453B78AE ../${PROGRAM_NAME}_${VERSION}${DEB}_source.changes
+	dput mentors ../${PROGRAM_NAME}_${VERSION}${DEB}_source.changes
+
+dist-rpm: dist-debian
+	sudo alien -r ../${PROGRAM_NAME}-dev_${VERSION}_all.deb
