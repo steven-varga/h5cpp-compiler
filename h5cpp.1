@@ -117,9 +117,9 @@ Typically the compiler is invoked from a
 .B Makefile
 in the following manner:
 .PP
-.in
 .EX
 .B Makefile:
+.in +4n
 [...]
 generated.h: struct.h
 	h5cpp  struct.cpp -- $(CXXFLAGS) $(INCLUDES) -Dgenerated.h
@@ -129,8 +129,8 @@ struct.o : struct.cpp generated.h
 
 struct: struct.o
 	$(CXX) $^ $(LIBS) -o $@	
-.EE
 .in
+.EE
 .PP
 
 Details set of examples may be found in
