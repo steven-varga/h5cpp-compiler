@@ -9,9 +9,9 @@ Vcs-Git: https://github.com/steven-varga/h5cpp-compiler.git
 Vcs-Browser: https://github.com/steven-varga/h5cpp-compiler
 Rules-Requires-Root: no
 
-Package: h5cpp-compiler-dev
+Package: h5cpp-compiler
 Architecture: any
-Depends: libllvm6.0, libstdc++6, libclang-common-6.0-dev, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: libh5cpp
 Description: LLVM based compiler assisted reflection for modern C++
  H5CPP-compiler automates the tedious and error prone process of

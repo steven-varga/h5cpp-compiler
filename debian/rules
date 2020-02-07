@@ -5,9 +5,7 @@ ifneq ($(DEB_BUILD_MULTIARCH),$(DEB_HOST_MULTIARCH))
 endif
 
 %:
-	dh $@
-override_dh_auto_configure:
-	 dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib
+	dh $@ --buildsystem=cmake --builddir=build
 
 override_dh_installdocs:
 	dh_installdocs		CONTRIBUTORS TODO
