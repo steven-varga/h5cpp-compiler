@@ -60,10 +60,16 @@ dist-debian-src: tar-gz
 
 dist-debian-bin:
 	debuild -i -us -uc -b
+	gpg --detach-sign --armor ../${PROGRAM_NAME}_${VERSION}${DEB}_amd64.deb
+
+dist-upload: dist-debian-src dist-debian-bin
+	scp ../${PROGRAM_NAME}_${VERSION}${DEB}_amd64.deb osaka:h5cpp.org/download/ 	
+	scp ../${PROGRAM_NAME}_${VERSION}${DEB}_amd64.deb.asc osaka:h5cpp.org/download/ 	
+
 
 dist-debian-src-upload: dist-debian-src
 	debsign -k 1B04044AF80190D78CFBE9A3B971AC62453B78AE ../${PROGRAM_NAME}_${VERSION}${DEB}_source.changes
 	dput mentors ../${PROGRAM_NAME}_${VERSION}${DEB}_source.changes
 
 dist-rpm: dist-debian
-	sudo alien -r ../${PROGRAM_NAME}-dev_${VERSION}_all.deb
+	sudo alien -r ../${PROGRAM_NAME}_${VERSION}_all.deb
