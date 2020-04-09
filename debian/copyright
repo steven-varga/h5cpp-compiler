@@ -4,7 +4,7 @@ Upstream-Contact: Steven Varga <steven@vargaconsulting.ca>
 Source: https://github.com/steven-varga/h5cpp-compiler.git
 
 Files: *
-Copyright: 2018-2020 Steven Varga
+Copyright: 2018-2020 Steven Varga <steven@vargaconsulting.ca>
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
