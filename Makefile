@@ -1,6 +1,6 @@
 PREFIX = /usr/local
 
-VERSION = 1.10.4.5
+VERSION = 1.10.4.6
 DEB = -1~exp1
 PROGRAM_NAME=h5cpp-compiler
 BIN_DIR = $(PREFIX)/bin
