@@ -1,12 +1,10 @@
 #  _____________________________________________________________________________
-#  Copyright (c) <2018-2020> <copyright Steven Varga, Toronto, On>
-#  Contact: Steven Varga
-#           steven@vargaconsulting.ca
-#           2018-2020 Toronto, On Canada
+#  Copyright (c) 2018-2020 Steven Varga, Toronto,ON Canada
+#  Author: Varga, Steven <steven@vargaconsulting.ca>
 #  _____________________________________________________________________________
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project(h5cpp-compiler-dev VERSION 1.10.4.5 LANGUAGES CXX C)
+project(h5cpp-compiler-dev VERSION 1.10.4.6 LANGUAGES CXX C)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")

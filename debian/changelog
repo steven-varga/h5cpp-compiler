@@ -1,4 +1,4 @@
-h5cpp-compiler (1.10.4.5-1~exp1) experimental; urgency=medium
+h5cpp-compiler (1.10.4.6-1~exp1) experimental; urgency=medium
 
   * first official debian release for h5cpp-compiler (closes: #950819)
 
