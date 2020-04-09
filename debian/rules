@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+ifneq ($(DEB_BUILD_MULTIARCH),$(DEB_HOST_MULTIARCH))
+       export CC=$(DEB_HOST_MULTIARCH)-gcc
+endif
+
+%:
+	dh $@ --buildsystem=cmake --builddir=build
+
+override_dh_installdocs:
+	dh_installdocs		CONTRIBUTORS TODO
